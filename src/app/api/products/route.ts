@@ -2,15 +2,13 @@
 
 // https://dummyjson.com/docs/products#products-all
 
+import { getProductsAPI } from "@/app/utils/ProductsManager/api";
+import { NextResponse } from "next/server";
+
 export async function GET(request: Request) {
-  console.log(request);
-  //   const { searchParams } = new URL(request.url)
-  //   const id = searchParams.get('id')
+  const data = await getProductsAPI();
 
-  const res = await fetch(`https://dummyjson.com/products`);
-  const products = await res.json();
-
-  return Promise.resolve({ products });
+  return NextResponse.json({ data });
 }
 
 export async function POST(request: Request) {}
