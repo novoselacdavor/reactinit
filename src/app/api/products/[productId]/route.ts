@@ -1,13 +1,12 @@
-export async function GET(request: Request) {
-  console.log(request);
-  //   const { searchParams } = new URL(request.url)
-  //   const id = searchParams.get('id')
-  //   const res = await fetch(`https://data.mongodb-api.com/product/${id}`, {
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       'API-Key': process.env.DATA_API_KEY!,
-  //     },
-  //   })
-  //   const product = await res.json()
-  return Response.json({ product: "valja" });
+import { NextResponse, NextRequest } from "next/server";
+import { getSingleProductAPI } from "@/app/utils/ProductsManager/api";
+
+export async function GET(
+  request: NextRequest,
+  requestParams: { params: { [key: string]: string } }
+) {
+  const { productId } = requestParams.params;
+  const data = await getSingleProductAPI({ id: productId });
+
+  return NextResponse.json({ data });
 }

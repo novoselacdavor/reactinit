@@ -2,19 +2,13 @@
 
 // https://dummyjson.com/docs/products#products-all
 
-export async function GET(request: Request) {
-  console.log(request);
-  //   const { searchParams } = new URL(request.url)
-  //   const id = searchParams.get('id')
+import { getProductsAPI } from "@/app/utils/ProductsManager/api";
+import { NextResponse } from "next/server";
 
-  //   const res = await fetch(`https://data.mongodb-api.com/product/${id}`, {
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       'API-Key': process.env.DATA_API_KEY!,
-  //     },
-  //   })
-  //   const product = await res.json()
-  return Response.json({ product: "valja" });
+export async function GET(request: Request) {
+  const data = await getProductsAPI();
+
+  return NextResponse.json({ data });
 }
 
 export async function POST(request: Request) {}
