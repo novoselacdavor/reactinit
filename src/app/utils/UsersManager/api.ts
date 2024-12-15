@@ -1,7 +1,7 @@
 export const getUsersAPI = () => {
-  // isto kako kad radiš proizvode
+  return fetch(`https://dummyjson.com/users`).then((res) => res.json());
 };
 
-export const getSingleUserAPI = () => {
-  // isto kao za single proizvoda
+export const getSingleUserAPI = ({ id }: { id: string }) => {
+  return fetch(`https://dummyjson.com/users/${id}`).then((res) => res.json());
 };
