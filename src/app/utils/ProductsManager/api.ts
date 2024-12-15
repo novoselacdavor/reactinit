@@ -3,7 +3,5 @@ export const getProductsAPI = () => {
 };
 
 export const getSingleProductAPI = ({ id }: { id: string }) => {
-  return fetch(`https://dummyjson.com/products/${id}`).then((res) =>
-    res.json()
-  );
+  return fetch(`https://dummyjson.com/products/${id}`).then((res) => res.json());
 };
